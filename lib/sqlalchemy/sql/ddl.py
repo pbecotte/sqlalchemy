@@ -507,6 +507,24 @@ class CreateTable(_CreateDropBase):
         self.include_foreign_key_constraints = include_foreign_key_constraints
 
 
+class CreateTableAsSelect(_CreateDropBase):
+    """Represent a CREATE TABLE AS SELECT ... statement"""
+
+    __visit_name__ = "create_table_as_select"
+
+    def __init__(self, element, tablename, prefixes=None, bind=None):
+        """Create a :class:`.CreateTableAsSelect` construct
+
+        :param element: a :class:`.Selectable` that will be used to create the table
+        :param tablename: the string name of the new table
+        :param prefixes: a list of prefixes such as `TEMP`
+        :param on: See the description for 'on' in :class:`.DDL`.
+        :param bind: See the description for 'bind' in :class:`.DDL`.
+
+        """
+        super(CreateTableAsSelect, self).__init()
+
+
 class _DropView(_CreateDropBase):
     """Semi-public 'DROP VIEW' construct.
 

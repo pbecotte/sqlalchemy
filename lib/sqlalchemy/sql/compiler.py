@@ -2858,6 +2858,9 @@ class DDLCompiler(Compiled):
         text += "\n)%s\n\n" % self.post_create_table(table)
         return text
 
+    def visit_create_table_as_select(self, ctas):
+
+
     def visit_create_column(self, create, first_pk=False):
         column = create.element
 
